@@ -12,7 +12,6 @@ public class main {
 		cmd = scan.nextLine();
 		
 		
-		System.out.println("Finish");
 
 	}
 
