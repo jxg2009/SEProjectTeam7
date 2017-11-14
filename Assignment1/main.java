@@ -20,7 +20,7 @@ public class main {
 			String cmd = scan.nextLine();
 			
 			String[] array;
-			array = cmd.split(" "); // split the cmd lines by space and inert into array
+			array = cmd.split(" "); // split the cmd lines by space and insert into array
 			
 			for(int i = 0 ; i < array.length; i++){
 				que.offer(array[i]); // insert the array element into queue
@@ -31,7 +31,7 @@ public class main {
 				System.out.println("================================");
 				System.out.println("1. help");
 				System.out.println("2. quit");
-				System.out.println("1. cvt");
+				System.out.println("3. cvt");
 				System.out.println("================================");
 				
 			} else if (cmd1.equals("quit")) {
