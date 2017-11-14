@@ -1,4 +1,6 @@
-/*file: main.java */
+/*file: main.java 
+ * date: 2017-11-14
+ */
 
 import java.util.*;
 import java.util.regex.Pattern;
