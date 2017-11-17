@@ -28,11 +28,17 @@ public class main {
 			String cmd1 = (String)que.poll();
 		
 			if (cmd1.equals("help")) { // when cmd is "help"
-				System.out.println("================================");
-				System.out.println("1. help");
-				System.out.println("2. quit");
-				System.out.println("3. cvt");
-				System.out.println("================================");
+				System.out.println("================================================================================================");
+				System.out.println("1. help: Showing information about commands");
+				System.out.println("2. quit: Terminating the program");
+				System.out.println("3. cvt: cvt 'input file' (space) ouputfile (space) option(-pl or -st or -sl) \n\n"
+						+ "\t*Changing the md input files into ouptput html files and save them with ouputfile name. \n"
+						+ "\t*Default ouputfile name: change only the format .md to .html from the inputfile name\n"
+						+ "\t*Input space between the command elements\n"
+						+ "\t*The number of input file can be one or more. \n"
+						+ "\t*Option: -pl(plain) -st(stylish) -sl(slide) // Default: -pl(plain)\n");
+				System.out.println("=================================================================================================");
+				
 				
 			} else if (cmd1.equals("quit")) {
 				return;
