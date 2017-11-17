@@ -43,6 +43,9 @@ public class main {
 					3.cvt inputfile (space) option
 					4.cvt inputfile  => default: plain
 					*/
+
+				// case 1 and 2 has problem
+
 				String pattern = "^\\S+.(?i)(md)$"; // ".md"file pattern 
 				String element = "";
 				
