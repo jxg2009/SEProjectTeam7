@@ -1,0 +1,139 @@
+/*file: main.java 
+ * date: 2017-11-14
+ */
+
+import java.util.*;
+import java.util.regex.Pattern;
+
+
+public class Markdown {
+	
+	public static void main(String[] args) {		
+		Scanner scan = new Scanner(System.in);
+		Queue que = new LinkedList();
+		Boolean cmdSuccess = false;
+		
+		Vector<String> inputFileList = new Vector(); // md file list
+		Vector<String> outputFileList = new Vector(); // output file list
+		String visitorStyle = null; //visitor style: plain, slide, stylish
+		Vector<String> spaceVector; // 공백으로 구분된 element가 들어 있는 벡터
+		Vector<String> mdVector1; // 1차적으로 html element로 교체한 element가 들어 있는 벡터
+		Vector<String> mdVector2; // 최종적으로 정리된 html element가 들어있는 벡터
+		
+		
+		while (!cmdSuccess) {
+			System.out.println("Enter your command(Enter 'help' for command help): ");
+			String cmd = scan.nextLine();
+			
+			String[] array;
+			array = cmd.split(" "); // split the cmd lines by space and insert into array
+			
+			for(int i = 0 ; i < array.length; i++){
+				que.offer(array[i]); // insert the array element into queue
+			}
+			String cmd1 = (String)que.poll();
+		
+			if (cmd1.equals("help")) { // when cmd is "help"
+				System.out.println("================================================================================================");
+				System.out.println("1. help: Showing information about commands");
+				System.out.println("2. quit: Terminating the program");
+				System.out.println("3. cvt: cvt 'input file' (space) ouputfile (space) option(-pl or -st or -sl) \n\n"
+						+ "\t*Changing the md input files into ouptput html files and save them with ouputfile name. \n"
+						+ "\t*Default ouputfile name: change only the format .md to .html from the inputfile name\n"
+						+ "\t*Input space between the command elements\n"
+						+ "\t*The number of input file can be one or more. \n"
+						+ "\t*Option: -pl(plain) -st(stylish) -sl(slide) // Default: -pl(plain)\n");
+				System.out.println("=================================================================================================");
+				
+			} else if (cmd1.equals("quit")) {
+				return;
+			} else if (cmd1.equals("cvt")) {
+				/* when cmd is "cvt" there are four cases
+					1.cvt inputfile (space) outputfile (space) option(-pl, -st, -sl )
+					2.cvt inputfile (space) outputfile
+					3.cvt inputfile (space) option
+					4.cvt inputfile  => default: plain
+					*/
+
+				// case 1 and 2 has problem
+
+				String pattern = "^\\S+.(?i)(md)$"; // ".md"file pattern 
+				String element = "";
+				
+				if(!que.isEmpty()) element = (String)que.poll();
+				
+				if(Pattern.matches(pattern, element)){
+					// when md file is given
+					while(Pattern.matches(pattern, element)){
+						inputFileList.addElement(element);
+						if(!que.isEmpty()) element = (String)que.poll();
+						else break;
+					}
+					pattern = "^\\S+.(?i)(html)$"; // ".html" file pattern
+				
+					if(Pattern.matches(pattern, element)){
+						// when the html format output file is given
+						while(Pattern.matches(pattern, element)){
+							outputFileList.addElement(element);
+							if(!que.isEmpty()) element = (String)que.poll();
+							else break;
+						}
+						
+						if(element.equals("-pl")){
+							visitorStyle = "plain";
+						} else if(element.equals("-st")){
+							visitorStyle = "stylish";
+						} else if(element.equals("-sl")){
+							visitorStyle = "slide";
+						} else {
+							// when style is not given => default: plain
+							visitorStyle = "plain";
+						}
+						cmdSuccess = true;
+					} else { 
+					// when the user didn't give the output file name => default naming
+						for(int i = 0 ; i < inputFileList.size(); i++){
+							String outputFile = inputFileList.elementAt(i).replace(".md", ".html");
+							// change the inputFileList 's name. => .md to .html
+							outputFileList.addElement(outputFile);
+						}
+						if(element.equals("-pl")){
+							visitorStyle = "plain";
+						} else if(element.equals("-st")){
+							visitorStyle = "stylish";
+						} else if(element.equals("-sl")){
+							visitorStyle = "slide";
+						} else {
+							// when style is not given => default: plain
+							visitorStyle = "plain";
+						}
+						cmdSuccess = true;
+					}
+					
+				} else{
+					System.out.println("Command Error: Inputfile has not be given");
+				}
+
+			} else { // When user entered not existing cmd
+				System.out.println("Command Error. Try help for more information");
+				System.out.println(cmd1);
+			}
+
+		}
+		if(Pattern.matches("^(=)+$", "=======")){
+			System.out.println("true");
+		} else{
+			System.out.println("false");		}
+		
+		FileRead fileRead = new FileRead("doc1.md"); // doc1.md를 바꾼다고 가정
+		spaceVector = fileRead.parseWithLine();
+		
+		MdParser mdParser = new MdParser();
+		//mdVector1 = mdParser.getMdString(spaceVector);
+		
+		
+		
+	}
+
+	}
+
