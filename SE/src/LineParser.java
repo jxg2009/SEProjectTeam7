@@ -6,58 +6,6 @@ public class LineParser {
 	public LineParser(){
 		
 	}
-//	public void test(Vector<String> src){
-//		int index = 0;
-//		String element;
-//		String list;
-//		String result;
-//		while(true){
-//			if(src.isEmpty()) break;
-//			element = src.elementAt(index);
-//			if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)){
-//				boolean entered = false; 
-//				result = "<ul>";
-//				list = element.substring(1); // removing *, +, - in the front to gain list content
-//				while(!src.elementAt(++index).isEmpty()){
-//					entered = true;
-//					element = src.elementAt(index);
-//					if(Pattern.matches("[\\*|\\+|\\-]{1}.*", element)){
-//						/*   * String
-//						 *   * String
-//						 *	 * String
-//						 *   형태 
-//						 */
-//						result += "<li>" + list +"</li>\n";
-//						list = element.substring(1);
-//					}
-//					else if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element)){
-//						/*	*String
-//						 *   	- String
-//						 *  *String
-//						 *  	- String
-//						 *  형태
-//						 */
-//						result += "<ul><li>" + list;
-//						list = 
-//						while()
-//					} 
-//					
-//					
-//					else{ // It is in the category of same list before
-//						list += element;
-//					}
-//				}
-//				if(entered) lineVector.addElement("</ul>");
-//				else{
-//					list = "<li>"+list+"</li></ul>";
-//					
-//				}
-//			}
-//			//if(Pattern.matches("*, input))
-//		}
-//		
-//		
-//	}
 	
 	public Vector<String> parseLine(Vector<String> src){
 				System.out.println(src.size());
@@ -102,6 +50,85 @@ public class LineParser {
 				lineVector.addElement(element);
 				index++;
 			} 
+//			else if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)){
+//				// list구현 파트<ul><li></li></ul>
+//
+//				boolean entered = false; 
+//				boolean enteredList = false;
+//				String list = element.substring(1); // removing *, +, - in the front to gain list content
+//				String result = "<ul><li>" + list;
+//				index++;
+//	System.out.println("check0");		
+//	System.out.println(result);
+//				while(!src.elementAt(index).isEmpty()){
+//					entered = true;
+//					element = src.elementAt(index); // new line 다음 줄
+//					if(Pattern.matches("[\\*|\\+|\\-]{1}[^\\-].*", element)){
+//						/*   * String(1)
+//						 *   * String(2) <= 현재 상황
+//						 *	 * String(3)
+//						 *   형태 
+//						 */
+//	System.out.println("check1");		
+//	System.out.println(result);
+//						result += "<li>" + list +"</li>\n"; // String(1)을 list로 처리
+//						list = element.substring(1); // string(2)
+//						index++;
+//					}
+//					else if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element)){
+//						/*	*String(1)
+//						 *   	- String(2) <= 현재 상황
+//						 *  *String(3)
+//						 *  	- String(4)
+//						 *  형태
+//						 */
+//	System.out.println("check2 result: " + result);		
+//	System.out.println(result);
+//						result += "<ul><li>" + list; // string(1)
+//						list = element.substring(1); // string(2)
+//						index++;
+//						element = src.elementAt(index);
+//						
+//						while(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element) ||
+//								Pattern.matches("^\\s+.*$", element)){ // string(3)이 같은 level의 sublist인 경우
+//		System.out.println("check3 result: " + result);		
+//		System.out.println(result);
+//							if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element)){
+//								result +="</li>" + list;
+//								list = element;
+//								enteredList = true;
+//							} else if(Pattern.matches("^\\s+.*$", element)){
+//								result += list;
+//								list = element;
+//							}
+//							index++;
+//							element = src.elementAt(index);
+//						}
+//						
+//						if(enteredList) result += "</ul>";
+//						else result += "</li></ul>";
+//						index++;
+//					} 
+//					
+//					
+//					else{ // It is in the category of same list before
+//						result += list;
+//						list = element.substring(1);
+//						index++;
+//System.out.println("check4 result: " + result);		
+//System.out.println(element);
+//					}
+//				}
+//				if(entered){
+//					result += "</ul1>";
+//					lineVector.addElement(result);
+//				}
+//				else list = "<li>"+list+"</li></ul1>";
+//				lineVector.addElement(result);
+//				
+//			}
+			
+			
 			
 			else{
 				lineVector.addElement(element);

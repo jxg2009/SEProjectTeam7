@@ -118,7 +118,7 @@ public class Markdown {
 
 		}
 		//^\\*{2}\\S+\\*{2}$
-//		if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", "*akfdj;aldf")){
+//		if(Pattern.matches("[\\*|\\+|\\-]{1}[^\\-].*", "-hello")){
 //			System.out.println("true");
 //		} else{
 //			System.out.println("false");}
@@ -127,11 +127,20 @@ public class Markdown {
 //		s = s + "</blockquoate>";
 //		System.out.println(s);
 
+		String test = "**MarkDown**";
+		test = test.replaceFirst("\\*{2}", "<em>");
+		test = test.replaceFirst("\\*{2}", "</em>");
+		System.out.println("testx: " + test);
+		
 		FileRead fileRead = new FileRead("doc2.md"); // doc1.md를 바꾼다고 가정
 		stringVector = fileRead.parseWithLine(); // separate by line
 		
 		LineParser lineParser = new LineParser(); 
-		stringVector = lineParser.parseLine(stringVector); // process with lines to make html element
+		stringVector = lineParser.parseLine(stringVector); // process with lines to make html element. 라인 단위 처리
+		 
+		MdParser mdParser = new MdParser();
+		stringVector = mdParser.parseWhiteSpace(stringVector); // 라인단위로 처리된 벡터를 단어 단위로 쪼개서 Sring vector에 저장
+		stringVector = mdParser.getMdString(stringVector); // 단어 단위로 html 문법 처리
 		
 		for(int i = 0 ; i < stringVector.size();i++ ){
 			System.out.println(stringVector.elementAt(i));
