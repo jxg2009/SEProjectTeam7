@@ -137,7 +137,7 @@ public class LineParser {
 			}
 
 		}
-					System.out.println("out");
+				//	System.out.println("out");
 		return lineVector;
 		
 	}

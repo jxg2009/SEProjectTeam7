@@ -127,12 +127,13 @@ public class Markdown {
 //		s = s + "</blockquoate>";
 //		System.out.println(s);
 
-		String test = "**MarkDown**";
-		test = test.replaceFirst("\\*{2}", "<em>");
-		test = test.replaceFirst("\\*{2}", "</em>");
-		System.out.println("testx: " + test);
-		
-		FileRead fileRead = new FileRead("doc2.md"); // doc1.md를 바꾼다고 가정
+
+//		String test = "**MarkDown**";
+//		test = test.replaceFirst("\\*{2}", "<em>");
+//		test = test.replaceFirst("\\*{2}", "</em>");
+//		System.out.println("testx: " + test);
+//		
+		FileRead fileRead = new FileRead("doc4.md"); // doc1.md를 바꾼다고 가정
 		stringVector = fileRead.parseWithLine(); // separate by line
 		
 		LineParser lineParser = new LineParser(); 

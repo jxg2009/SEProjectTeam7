@@ -52,10 +52,10 @@ public class FileRead {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-//		for(int i = 0 ; i < resultVector.size(); i++){
-//			System.out.println(resultVector.elementAt(i));
-//		}
-		
+		for(int i = 0 ; i < resultVector.size(); i++){
+			System.out.println(resultVector.elementAt(i));
+		}
+		System.out.println("====================================================");
 		return resultVector;
 		
 

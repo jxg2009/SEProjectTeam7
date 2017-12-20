@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class MdParser {
 	public MdParser(){};
-	public Vector<String> process = new Vector<String>(); // 중간 중간 HTML로 바꾸는 과정을 저장하는 벡터
+	public Vector<String> processVector = new Vector<String>(); // 중간 중간 HTML로 바꾸는 과정을 저장하는 벡터
 	
 	// 한줄씩 나눠서 저장한 벡터에서 각줄을 읽어와 단어단위로 잘라 벡터에 너은 후 그 벡터를 반환
 	public Vector<String> parseWhiteSpace(Vector<String> src){
@@ -21,10 +21,6 @@ public class MdParser {
 			index++;
 		}
 		
-		System.out.println("============================================");
-		for(int i = 0 ; i < resultVector.size();i++){
-			System.out.println(resultVector.elementAt(i));
-		}
 		return resultVector;
 		
 	}
@@ -37,36 +33,37 @@ public class MdParser {
 		if(!src.isEmpty()){
 			while(true){
 				String element = src.elementAt(index);
-				
-				// <H1></H1> 태그
 		
 			 if(Pattern.matches("^\\*{2}\\S+\\*{2}$", element) || Pattern.matches("^\\*{1}\\S+\\*{1}$", element)){
 					// <em></em>태그.*또는 **로 쌓여져 있는 문자 강조
-	System.out.println("test: " + element );
 					if(Pattern.matches("^\\*{2}\\S+\\*{2}$" ,element)){//**String** 형태인 경우
 						element = element.replaceFirst("\\*{2}", "<em>");
 						element = element.replaceFirst("\\*{2}", "</em>");
-						process.addElement(element);
+						processVector.addElement(element);
 					} else{ // *String* 형태인 경우
 						element = element.replaceFirst("\\*", "<em>");
 						element = element.replaceFirst("\\*", "</em>");
-						process.addElement(element);
+						processVector.addElement(element);
 					}
 					index++;
-				}
+			}
+			 else if(Pattern.matches("^(\\\\<){1}.*(\\\\>){1}", element)){
+				 	System.out.println("---------------TEST--------------:"+ element);
+					element = element.replace("\\<", "&lt");
+					element = element.replace("\\>", "&gt");
+					System.out.println("---------------TEST2--------------:"+ element);
+					processVector.addElement(element);
+					index++;
+			 }
 				else{
-					process.addElement(element);
+					processVector.addElement(element);
 					index++;
 					if(index == src.size() -1 ) break;
 				}	
 			}
 		}
 
-		for(int i =0; i < process.size(); i++){
-			System.out.println("+++++++++++++++++++++++++++++");
-			System.out.println(process.elementAt(i));
-		}
-		return src;
+		return processVector;
 		
 	}
 }
