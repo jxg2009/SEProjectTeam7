@@ -19,7 +19,7 @@ public class Markdown {
 		Vector<String> spaceVector; // 공백으로 구분된 element가 들어 있는 벡터
 		Vector<String> mdVector1; // 1차적으로 html element로 교체한 element가 들어 있는 벡터
 		Vector<String> mdVector2; // 최종적으로 정리된 html element가 들어있는 벡터
-		
+		Vector<String> lineVector; // 줄단위로 파싱한 벡터
 		
 		while (!cmdSuccess) {
 			System.out.println("Enter your command(Enter 'help' for command help): ");
@@ -120,13 +120,19 @@ public class Markdown {
 			}
 
 		}
-		if(Pattern.matches("^(=)+$", "=======")){
+		//^\\*{2}\\S+\\*{2}$
+		if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", "*akfdj;aldf")){
 			System.out.println("true");
 		} else{
-			System.out.println("false");		}
+			System.out.println("false");}
+		String s = ">adhfkjd;f;f adffda";
+		s = s.replaceFirst(">", "<blockquoate>");
+		s = s + "</blockquoate>";
+		System.out.println(s);
+
+		FileRead fileRead = new FileRead("doc2.md"); // doc1.md를 바꾼다고 가정
+		//lineVector = fileRead.parseWithLine();
 		
-		FileRead fileRead = new FileRead("doc1.md"); // doc1.md를 바꾼다고 가정
-		spaceVector = fileRead.parseWithLine();
 		
 		MdParser mdParser = new MdParser();
 		//mdVector1 = mdParser.getMdString(spaceVector);

@@ -27,9 +27,10 @@ public class FileRead {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		for(int i = 0 ; i < lineVector.size(); i++){
+		for(int i = 0; i < lineVector.size(); i++){
 			System.out.println(lineVector.elementAt(i));
 		}
+		
 		return lineVector;
 	}
 	
@@ -45,6 +46,7 @@ public class FileRead {
 				for(int i = 0; i < elements.length; i++){ // resultVector에 공백으로 구분된 문자들을 집어 넣음
 					resultVector.add(elements[i]);
 				}
+				
 			}
 			
 		}catch(Exception e){
