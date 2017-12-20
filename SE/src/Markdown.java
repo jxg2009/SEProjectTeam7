@@ -16,10 +16,7 @@ public class Markdown {
 		Vector<String> inputFileList = new Vector(); // md file list
 		Vector<String> outputFileList = new Vector(); // output file list
 		String visitorStyle = null; //visitor style: plain, slide, stylish
-		Vector<String> spaceVector; // 공백으로 구분된 element가 들어 있는 벡터
-		Vector<String> mdVector1; // 1차적으로 html element로 교체한 element가 들어 있는 벡터
-		Vector<String> mdVector2; // 최종적으로 정리된 html element가 들어있는 벡터
-		Vector<String> lineVector; // 줄단위로 파싱한 벡터
+		Vector<String> stringVector; // 줄단위로 파싱한 벡터
 		
 		while (!cmdSuccess) {
 			System.out.println("Enter your command(Enter 'help' for command help): ");
@@ -121,21 +118,24 @@ public class Markdown {
 
 		}
 		//^\\*{2}\\S+\\*{2}$
-		if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", "*akfdj;aldf")){
-			System.out.println("true");
-		} else{
-			System.out.println("false");}
-		String s = ">adhfkjd;f;f adffda";
-		s = s.replaceFirst(">", "<blockquoate>");
-		s = s + "</blockquoate>";
-		System.out.println(s);
+//		if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", "*akfdj;aldf")){
+//			System.out.println("true");
+//		} else{
+//			System.out.println("false");}
+//		String s = ">adhfkjd;f;f adffda";
+//		s = s.replaceFirst(">", "<blockquoate>");
+//		s = s + "</blockquoate>";
+//		System.out.println(s);
 
 		FileRead fileRead = new FileRead("doc2.md"); // doc1.md를 바꾼다고 가정
-		//lineVector = fileRead.parseWithLine();
+		stringVector = fileRead.parseWithLine(); // separate by line
 		
+		LineParser lineParser = new LineParser(); 
+		stringVector = lineParser.parseLine(stringVector); // process with lines to make html element
 		
-		MdParser mdParser = new MdParser();
-		//mdVector1 = mdParser.getMdString(spaceVector);
+		for(int i = 0 ; i < stringVector.size();i++ ){
+			System.out.println(stringVector.elementAt(i));
+		}
 		
 		
 		

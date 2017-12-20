@@ -27,9 +27,9 @@ public class FileRead {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		for(int i = 0; i < lineVector.size(); i++){
-			System.out.println(lineVector.elementAt(i));
-		}
+//		for(int i = 0; i < lineVector.size(); i++){
+//			System.out.println(lineVector.elementAt(i));
+//		}
 		
 		return lineVector;
 	}
