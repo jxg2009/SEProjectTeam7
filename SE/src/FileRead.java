@@ -5,9 +5,9 @@ import java.io.FileReader;
 import java.util.Vector;
 
 public class FileRead {
-	Vector<String> resultVector = new Vector<String>(); // °ø¹é ±âÁØÀ¸·Î ÆÄ½ÌÇÑ stringÀÌ µé¾î°¥ º¤ÅÍ
-	Vector<String> lineVector = new Vector<String>(); // ÁÙ ´ÜÀ§·Î ÆÄ½ÌÇÑ stringÀÌ µé¾î°¥ º¤ÅÍ
-	String fileName; // ÆÄ½ÌÇÒ mdÆÄÀÏÀÇ ÀÌ¸§
+	Vector<String> resultVector = new Vector<String>(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ stringï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½ï¿½ï¿½
+	Vector<String> lineVector = new Vector<String>(); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ stringï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½ï¿½ï¿½
+	String fileName; // ï¿½Ä½ï¿½ï¿½ï¿½ mdï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	FileReader fileReader = null;
 	BufferedReader br = null;
 	
@@ -17,10 +17,10 @@ public class FileRead {
 	
 	public Vector<String> parseWithLine(){
 		try{
-			fileReader = new FileReader("C:\\Users\\User\\workspace\\SE\\src\\" + fileName); // Àı´ë °æ·Î
+			fileReader = new FileReader("./" + fileName); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			br = new BufferedReader(fileReader);
-			String s = null; // ÇÑÁÙ¾¿ ÀĞ¾î¼­ ÀúÀåÇÒ º¯¼ö
-			while((s = br.readLine()) != null){ // ÇÑÁÙ¾¿ ÀĞ¾î¼­ String s¿¡ ³ÖÀ½(¸¶Áö¸· Á×±îÁö °è¼Ó)
+			String s = null; // ï¿½ï¿½ï¿½Ù¾ï¿½ ï¿½Ğ¾î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			while((s = br.readLine()) != null){ // ï¿½ï¿½ï¿½Ù¾ï¿½ ï¿½Ğ¾î¼­ String sï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
 				lineVector.add(s);
 			}
 			
@@ -34,16 +34,16 @@ public class FileRead {
 		return lineVector;
 	}
 	
-	// mdÆÄÀÏÀ» °ø¹éÀ» ±âÁØÀ¸·Î ÆÄ½ÌÇØ¼­ resultVector¿¡ ´ã´Â method
+	// mdï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½Ø¼ï¿½ resultVectorï¿½ï¿½ ï¿½ï¿½ï¿½ method
 	public Vector<String> parseWithWhiteSpace(){
 		try{ //"C:\\Users\\User\\workspace\\SE\\src\\"
-			fileReader = new FileReader(fileName); // Àı´ë °æ·Î
+			fileReader = new FileReader(fileName); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			br = new BufferedReader(fileReader);
-			String s = null; // ÇÑÁÙ¾¿ ÀĞ¾î¼­ ÀúÀåÇÒ º¯¼ö
-			while((s = br.readLine()) != null){ // ÇÑÁÙ¾¿ ÀĞ¾î¼­ String s¿¡ ³ÖÀ½(¸¶Áö¸· Á×±îÁö °è¼Ó)
-				String[] elements; // ÇÑÁÙÀ» °ø¹éÀ¸·Î ³ª´« °á°úÀÎ ¹®ÀÚµéÀ» ÀúÀåÇÒ º¯¼ö
-				elements = s.split("\\s+"); // ÇÑÁÙÀ» °ø¹é±âÁØÀ¸·Î ÂÉ°³¼­ String¹è¿­ elements¿¡ Áı¾î ³ÖÀ½
-				for(int i = 0; i < elements.length; i++){ // resultVector¿¡ °ø¹éÀ¸·Î ±¸ºĞµÈ ¹®ÀÚµéÀ» Áı¾î ³ÖÀ½
+			String s = null; // ï¿½ï¿½ï¿½Ù¾ï¿½ ï¿½Ğ¾î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			while((s = br.readLine()) != null){ // ï¿½ï¿½ï¿½Ù¾ï¿½ ï¿½Ğ¾î¼­ String sï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+				String[] elements; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				elements = s.split("\\s+"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É°ï¿½ï¿½ï¿½ Stringï¿½è¿­ elementsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				for(int i = 0; i < elements.length; i++){ // resultVectorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ğµï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					resultVector.add(elements[i]);
 				}	
 			}			
