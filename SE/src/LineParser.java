@@ -50,6 +50,22 @@ public class LineParser {
 				lineVector.addElement(element);
 				index++;
 			} 
+//			else if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)) {
+//				// list 구현 파트 <ul><li></li><ul>
+//				Vector<String> firstLevelVector = new Vector<String>(); // 바깥쪽 리스트
+//				Vector<String> secondLevelVector = new Vector<String>(); // nested list
+//				
+//				firstLevelVector.add(element);
+//				index++;
+//				element = src.elementAt(index); // 한칸 앞으로 전진
+//				
+//				while()
+//				
+//				
+//			}
+			
+			
+			
 //			else if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)){
 //				// list구현 파트<ul><li></li></ul>
 //
