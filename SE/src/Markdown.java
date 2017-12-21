@@ -130,25 +130,6 @@ public class Markdown {
 			}
 
 		}
-		
-
-		
-
-		//<img src = "https://www.handong.edu/site/handong/res/img/logo.png " alt = "tag">
-
-				 
-
-
-		 
-		// String s = ">adhfkjd;f;f adffda";
-		// s = s.replaceFirst(">", "<blockquoate>");
-		// s = s + "</blockquoate>";
-		// System.out.println(s);
-
-		// String test = "**MarkDown**";
-		// test = test.replaceFirst("\\*{2}", "<em>");
-		// test = test.replaceFirst("\\*{2}", "</em>");
-		// System.out.println("testx: " + test);
 	
 		 
 		for(int i = 0; i < inputFileList.size(); i++){

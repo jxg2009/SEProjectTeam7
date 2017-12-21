@@ -50,21 +50,35 @@ public class LineParser {
 				lineVector.addElement(element);
 				index++;
 			} 
-//			else if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)) {
-//				// list 구현 파트 <ul><li></li><ul>
-//				Vector<String> firstLevelVector = new Vector<String>(); // 바깥쪽 리스트
-//				Vector<String> secondLevelVector = new Vector<String>(); // nested list
+//			else if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)){ // list 구현
+//				Vector<String> firstLevelVector = new Vector<String>();
+//				Vector<String> secondLevelVector = new Vector<String>();
 //				
-//				firstLevelVector.add(element);
+//				firstLevelVector.addElement(element);
 //				index++;
-//				element = src.elementAt(index); // 한칸 앞으로 전진
-//				
-//				while()
-//				
+//				while(!src.elementAt(index).isEmpty()){
+//					element = src.elementAt(index);
+//					if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)){
+//						firstLevelVector.addElement(element);
+//						index++;
+//					} else if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element)){
+//						secondLevelVector.add(firstLevelVector.elementAt(firstLevelVector.size() - 1));
+//						do{
+//							secondLevelVector.addElement(element);
+//							index++;
+//							element = src.elementAt(index);
+//						}while(Pattern.matches("^\\s{1,8}.*$", element));
+//						index++;
+//					}
+//				}
+//				for(int i = 0 ; i < firstLevelVector.size();i++){
+//					System.out.println("******************* " + firstLevelVector.elementAt(i) );
+//				}
+//				for(int i = 0 ; i < secondLevelVector.size();i++){
+//					System.out.println("******************* " + secondLevelVector.elementAt(i) );
+//				}
 //				
 //			}
-			
-			
 			
 //			else if(Pattern.matches("[\\*|\\+|\\-]{1}.*$", element)){
 //				// list구현 파트<ul><li></li></ul>
@@ -72,7 +86,7 @@ public class LineParser {
 //				boolean entered = false; 
 //				boolean enteredList = false;
 //				String list = element.substring(1); // removing *, +, - in the front to gain list content
-//				String result = "<ul><li>" + list;
+//				String result = "<ul><li>";
 //				index++;
 //	System.out.println("check0");		
 //	System.out.println(result);
@@ -87,7 +101,7 @@ public class LineParser {
 //						 */
 //	System.out.println("check1");		
 //	System.out.println(result);
-//						result += "<li>" + list +"</li>\n"; // String(1)을 list로 처리
+//						result = result + list +"</li>\n"; // String(1)을 list로 처리
 //						list = element.substring(1); // string(2)
 //						index++;
 //					}
@@ -100,20 +114,21 @@ public class LineParser {
 //						 */
 //	System.out.println("check2 result: " + result);		
 //	System.out.println(result);
-//						result += "<ul><li>" + list; // string(1)
+//						result = result + list + "</li> <ul><li>"; // string(1)
 //						list = element.substring(1); // string(2)
 //						index++;
 //						element = src.elementAt(index);
 //						
 //						while(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element) ||
-//								Pattern.matches("^\\s+.*$", element)){ // string(3)이 같은 level의 sublist인 경우
+//								Pattern.matches("^\\s{1,8}.*$", element)){ // string(3)이 같은 level의 sublist인 경우
 //		System.out.println("check3 result: " + result);		
 //		System.out.println(result);
 //							if(Pattern.matches("^\\s+[\\*|\\+|\\-]{1}.*$", element)){
-//								result +="</li>" + list;
+//								result = result + list + "</li>";
 //								list = element;
 //								enteredList = true;
-//							} else if(Pattern.matches("^\\s+.*$", element)){
+//							} else if(Pattern.matches("^\\s{1,8}.*$", element)){
+//								
 //								result += list;
 //								list = element;
 //							}
@@ -126,7 +141,7 @@ public class LineParser {
 //						index++;
 //					} 
 //					
-//					
+					
 //					else{ // It is in the category of same list before
 //						result += list;
 //						list = element.substring(1);
@@ -136,10 +151,10 @@ public class LineParser {
 //					}
 //				}
 //				if(entered){
-//					result += "</ul1>";
+//					result += "</ul>";
 //					lineVector.addElement(result);
 //				}
-//				else list = "<li>"+list+"</li></ul1>";
+//				else result = result + list +"</li></ul>";
 //				lineVector.addElement(result);
 //				
 //			}
