@@ -5,9 +5,9 @@ import java.io.FileReader;
 import java.util.Vector;
 
 public class FileRead {
-	Vector<String> resultVector = new Vector<String>(); // °ø¹é ±âÁØÀ¸·Î ÆÄ½ÌÇÑ stringÀÌ µé¾î°¥ º¤ÅÍ
-	Vector<String> lineVector = new Vector<String>(); // ÁÙ ´ÜÀ§·Î ÆÄ½ÌÇÑ stringÀÌ µé¾î°¥ º¤ÅÍ
-	String fileName; // ÆÄ½ÌÇÒ mdÆÄÀÏÀÇ ÀÌ¸§
+	Vector<String> resultVector = new Vector<String>(); // ê³µë°± ê¸°ì¤€ìœ¼ë¡œ íŒŒì‹±í•œ stringì´ ë“¤ì–´ê°ˆ ë²¡í„°
+	Vector<String> lineVector = new Vector<String>(); // ì¤„ ë‹¨ìœ„ë¡œ íŒŒì‹±í•œ stringì´ ë“¤ì–´ê°ˆ ë²¡í„°
+	String fileName; // íŒŒì‹±í•  mdíŒŒì¼ì˜ ì´ë¦„
 	FileReader fileReader = null;
 	BufferedReader br = null;
 	
@@ -17,10 +17,10 @@ public class FileRead {
 	
 	public Vector<String> parseWithLine(){
 		try{
-			fileReader = new FileReader("C:\\Users\\User\\workspace\\SE\\src\\" + fileName); // Àı´ë °æ·Î
+			fileReader = new FileReader("./" + fileName); // ì ˆëŒ€ ê²½ë¡œ
 			br = new BufferedReader(fileReader);
-			String s = null; // ÇÑÁÙ¾¿ ÀĞ¾î¼­ ÀúÀåÇÒ º¯¼ö
-			while((s = br.readLine()) != null){ // ÇÑÁÙ¾¿ ÀĞ¾î¼­ String s¿¡ ³ÖÀ½(¸¶Áö¸· Á×±îÁö °è¼Ó)
+			String s = null; // í•œì¤„ì”© ì½ì–´ì„œ ì €ì¥í•  ë³€ìˆ˜
+			while((s = br.readLine()) != null){ // í•œì¤„ì”© ì½ì–´ì„œ String sì— ë„£ìŒ(ë§ˆì§€ë§‰ ì£½ê¹Œì§€ ê³„ì†)
 				lineVector.add(s);
 			}
 			
@@ -34,16 +34,16 @@ public class FileRead {
 		return lineVector;
 	}
 	
-	// mdÆÄÀÏÀ» °ø¹éÀ» ±âÁØÀ¸·Î ÆÄ½ÌÇØ¼­ resultVector¿¡ ´ã´Â method
+	// mdíŒŒì¼ì„ ê³µë°±ì„ ê¸°ì¤€ìœ¼ë¡œ íŒŒì‹±í•´ì„œ resultVectorì— ë‹´ëŠ” method
 	public Vector<String> parseWithWhiteSpace(){
 		try{ //"C:\\Users\\User\\workspace\\SE\\src\\"
-			fileReader = new FileReader(fileName); // Àı´ë °æ·Î
+			fileReader = new FileReader(fileName); // ì ˆëŒ€ ê²½ë¡œ
 			br = new BufferedReader(fileReader);
-			String s = null; // ÇÑÁÙ¾¿ ÀĞ¾î¼­ ÀúÀåÇÒ º¯¼ö
-			while((s = br.readLine()) != null){ // ÇÑÁÙ¾¿ ÀĞ¾î¼­ String s¿¡ ³ÖÀ½(¸¶Áö¸· Á×±îÁö °è¼Ó)
-				String[] elements; // ÇÑÁÙÀ» °ø¹éÀ¸·Î ³ª´« °á°úÀÎ ¹®ÀÚµéÀ» ÀúÀåÇÒ º¯¼ö
-				elements = s.split("\\s+"); // ÇÑÁÙÀ» °ø¹é±âÁØÀ¸·Î ÂÉ°³¼­ String¹è¿­ elements¿¡ Áı¾î ³ÖÀ½
-				for(int i = 0; i < elements.length; i++){ // resultVector¿¡ °ø¹éÀ¸·Î ±¸ºĞµÈ ¹®ÀÚµéÀ» Áı¾î ³ÖÀ½
+			String s = null; // í•œì¤„ì”© ì½ì–´ì„œ ì €ì¥í•  ë³€ìˆ˜
+			while((s = br.readLine()) != null){ // í•œì¤„ì”© ì½ì–´ì„œ String sì— ë„£ìŒ(ë§ˆì§€ë§‰ ì£½ê¹Œì§€ ê³„ì†)
+				String[] elements; // í•œì¤„ì„ ê³µë°±ìœ¼ë¡œ ë‚˜ëˆˆ ê²°ê³¼ì¸ ë¬¸ìë“¤ì„ ì €ì¥í•  ë³€ìˆ˜
+				elements = s.split("\\s+"); // í•œì¤„ì„ ê³µë°±ê¸°ì¤€ìœ¼ë¡œ ìª¼ê°œì„œ Stringë°°ì—´ elementsì— ì§‘ì–´ ë„£ìŒ
+				for(int i = 0; i < elements.length; i++){ // resultVectorì— ê³µë°±ìœ¼ë¡œ êµ¬ë¶„ëœ ë¬¸ìë“¤ì„ ì§‘ì–´ ë„£ìŒ
 					resultVector.add(elements[i]);
 				}	
 			}			
